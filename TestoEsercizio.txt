@@ -1,0 +1,5 @@
+Data una sequenza di numeri calcolare:
+- somma
+- media
+- numero massimo e minimo
+- scarto medio
