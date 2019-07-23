@@ -9,13 +9,13 @@ package esesame5;
  *
  * @author besan
  */
-public class ThScartoMedio extends Thread {
+public class ThVisualizza extends Thread {
 
     DatiCondivisi datiC = new DatiCondivisi();
     int buffer;
     int numero;
 
-    public ThScartoMedio(int n, DatiCondivisi ptrDati) {
+    public ThVisualizza(int n, DatiCondivisi ptrDati) {
         datiC = ptrDati;
         numero = n;
         buffer = datiC.getBuffer();
@@ -24,9 +24,9 @@ public class ThScartoMedio extends Thread {
     @Override
     public void run() {
         for (int i = 0; i < numero; i++) {
-            datiC.chiediPermesso4();
-            datiC.scartoMedio(i+1);
-            datiC.daiPermesso5();
+            datiC.chiediPermesso5();
+            datiC.visualizza();
+            datiC.daiPermesso6();
         }
     }
 }

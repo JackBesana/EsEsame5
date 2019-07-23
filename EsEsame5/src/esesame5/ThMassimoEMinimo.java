@@ -12,27 +12,22 @@ package esesame5;
 public class ThMassimoEMinimo extends Thread {
 
     DatiCondivisi datiC = new DatiCondivisi();
+    int buffer;
+    int numero;
 
-    public ThMassimoEMinimo(DatiCondivisi ptrDati) {
+    public ThMassimoEMinimo(int n, DatiCondivisi ptrDati) {
         datiC = ptrDati;
+        numero = n;
+        buffer = datiC.getBuffer();
     }
 
     @Override
     public void run() {
-        int massimo = 0;
-        int minimo = 11;
-        datiC.chiediPermesso3();
-        for (int i = 0; i < datiC.v.size(); i++) {
-            
-            if (massimo < datiC.v.get(i)) {
-                massimo = datiC.v.get(i);
-            }
-            if (minimo > datiC.v.get(i)) {
-                minimo = datiC.v.get(i);
-            }
+        for (int i = 0; i < numero; i++) {
+            datiC.chiediPermesso3();
+            datiC.massimoEMinimo();
+            datiC.daiPermesso4();
         }
-        System.out.println("Il massimo è: " + massimo);
-        System.out.println("Il minimo è: " + minimo);
-        datiC.daiPermesso4();
     }
+
 }

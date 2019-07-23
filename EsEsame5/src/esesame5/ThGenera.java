@@ -12,22 +12,26 @@ import java.util.Random;
  * @author besan
  */
 public class ThGenera extends Thread {
-    
-    DatiCondivisi datiC=new DatiCondivisi();
-    
-    public ThGenera(DatiCondivisi ptrDati){
-        datiC=ptrDati;
+
+    DatiCondivisi datiC = new DatiCondivisi();
+    int buffer;
+    int numero;
+
+    public ThGenera(int n, DatiCondivisi ptrDati) {
+        datiC = ptrDati;
+        numero = n;
+        buffer = datiC.getBuffer();
     }
-   
+
     @Override
-    public void run(){
-        Random rand=new Random();
-        for(int i=0;i<11;i++){
-            datiC.v.add(rand.nextInt(10));
-            System.out.println(datiC.v.get(i));
+    public void run() {
+        Random rand = new Random();
+        for (int i = 0; i < numero; i++) {
+            datiC.chiediPermesso6();
+            buffer = (rand.nextInt(10));
+            datiC.setBuffer(buffer);
+            datiC.daiPermesso1();
         }
-        
-        datiC.daiPermesso1();
-        
+
     }
 }

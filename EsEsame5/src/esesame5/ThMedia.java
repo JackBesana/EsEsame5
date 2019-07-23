@@ -12,21 +12,21 @@ package esesame5;
 public class ThMedia extends Thread {
 
     DatiCondivisi datiC = new DatiCondivisi();
+    int buffer;
+    int numero;
 
-    public ThMedia(DatiCondivisi ptrDati) {
+    public ThMedia(int n, DatiCondivisi ptrDati) {
         datiC = ptrDati;
+        numero = n;
+        buffer = datiC.getBuffer();
     }
 
     @Override
     public void run() {
-        int somma = 0;
-        float media = 0;
-        datiC.chiediPermesso2();
-        for (int i = 0; i < datiC.v.size(); i++) {
-             somma = somma + datiC.v.get(i);
+        for (int i = 0; i < numero; i++) {
+            datiC.chiediPermesso2();
+            datiC.media(i+1);
+            datiC.daiPermesso3();
         }
-        media = somma / datiC.v.size();
-        System.out.println("La media è: " + media);
-        datiC.daiPermesso3();
     }
 }

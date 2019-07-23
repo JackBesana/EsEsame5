@@ -12,20 +12,21 @@ package esesame5;
 public class ThSomma extends Thread {
 
     DatiCondivisi datiC = new DatiCondivisi();
+    int buffer;
+    int numero;
 
-    public ThSomma(DatiCondivisi ptrDati) {
+    public ThSomma(int n, DatiCondivisi ptrDati) {
         datiC = ptrDati;
+        numero = n;
+        buffer = datiC.getBuffer();
     }
 
     @Override
     public void run() {
-        int somma = 0;
-        datiC.chiediPermesso1();
-        for (int i = 0; i < datiC.v.size(); i++) {
-            
-            somma = somma + datiC.v.get(i);
+        for (int i = 0; i < numero; i++) {
+            datiC.chiediPermesso1();
+            datiC.somma();
+            datiC.daiPermesso2();
         }
-        System.out.println("La somma è: " + somma);
-        datiC.daiPermesso2();
     }
 }
